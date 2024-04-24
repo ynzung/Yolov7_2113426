@@ -19,8 +19,6 @@ from collections import OrderedDict,namedtuple
 providers = ['CUDAExecutionProvider', 'CPUExecutionProvider'] if cuda else ['CPUExecutionProvider'] #['AzureExecutionProvider', 'CPUExecutionProvider'] if cuda else ['CPUExecutionProvider']
 session = ort.InferenceSession(w, providers=providers)
 
-# tf.disable_v2_behavior()
-
 x = tf.constant([2.0, 3.0])
 x2 = tf.square(x)
 

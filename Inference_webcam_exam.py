@@ -2,8 +2,7 @@
 #yunjung2113426
 
 import cv2
-# import tensorflow as tf
-import tensorflow.compat.v1 as tf
+import tensorflow as tf
 cuda = True
 w = "yolov7-tiny.onnx"
 #img = cv2.imread('horses.jpg')  # image-based execute!
@@ -20,13 +19,14 @@ from collections import OrderedDict,namedtuple
 providers = ['CUDAExecutionProvider', 'CPUExecutionProvider'] if cuda else ['CPUExecutionProvider'] #['AzureExecutionProvider', 'CPUExecutionProvider'] if cuda else ['CPUExecutionProvider']
 session = ort.InferenceSession(w, providers=providers)
 
-tf.disable_v2_behavior()
+# tf.disable_v2_behavior()
 
-with tf.Session() as sess:
-    x = tf.placeholder(tf.float32, [2])
-    x2 = tf.square(x)
-    print(sess.run(x2, feed_dict={x: [2, 3]}))
-    # [4. 9.]
+x = tf.constant([2.0, 3.0])
+x2 = tf.square(x)
+
+print(x2.numpy())
+# [4. 9.]
+
 
 #print("00000")
 
